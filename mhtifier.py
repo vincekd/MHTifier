@@ -54,7 +54,10 @@ def main():
 
 	# New directory?
 	if args.unpack:
-		os.mkdir(args.d)
+		try:
+			os.mkdir(args.d)
+		catch FileExistsError:
+			print("directory exists: %s" % args.d)
 
 	# Change directory so paths (content-location) are relative to index.html.
 	os.chdir(args.d)
